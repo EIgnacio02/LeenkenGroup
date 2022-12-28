@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Empleado</h2>
+        </div>
+    </div>
+</div>
+<br />
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.material.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" src="~/CRUDJs/Crud.js" ></script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+
+        </div>
+        <div class="col-md-1" style="padding-left:100px">
+            <button type="button" class="btn btn-success" id="btnAdd" onclick="Modal()">Agregar</button>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table id="tblEmpleado" class="table table-hover" border="1">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">Editar</th>
+                        <th class="text-center" scope="col" style="display :none;">IdNombre</th>
+                        <th class="text-center" scope="col">Numero Nomina</th>
+                        <th class="text-center" scope="col">Nombre</th>
+                        <th class="text-center" scope="col">Apellido Paterno</th>
+                        <th class="text-center" scope="col">Apellido Materno</th>
+                        <th class="text-center" scope="col" style="display :none;">Id Estado</th>
+                        <th class="text-center" scope="col">Nombre Estado</th>
+                        <th class="text-center" scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            @*Header*@
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Informacion del empleado</h4>
+                <button type="button" class="close" data-dismiss="modal">x</button> @*Creacion de boton de cerrar*@
+            </div>
+
+            @*Body*@
+            <div class="modal-body"> 
+                <form>
+                    @*IdEmpleado*@
+                    <div class="form-group">
+                        <label>Id Empleado</label>
+                        <input type="text" class="form-control" id="txtIdEmpleado" placeholder="Id Empleado" disabled="disabled" />
+                    </div>
+
+                    @*Numero de nomina*@
+                    <div class="form-group">
+                        <label>Numero Nomina</label>
+                        <input type="text" class="form-control" id="txtNumeroNomina" placeholder="Numero Nomina" disabled="disabled"/>
+                    </div>
+
+                    @*Nombre*@
+                    <div class="form-group">
+                        <label>Nombre Empelado</label>
+                        <input type="text" class="form-control" id="txtNombreEmpleado" placeholder="Nombre Empelado"/>
+                    </div>
+
+                    @*Apellido Paterno*@
+                    <div class="form-group">
+                        <label>Apellido Paterno</label>
+                        <input type="text" class="form-control" id="txtApellidoPaterno" placeholder="Apellido Paterno"/>
+                    </div>
+                                        
+                    @*Apellido Paterno*@
+                    <div class="form-group">
+                        <label>Apellido Paterno</label>
+                        <input type="text" class="form-control" id="txtApellidoMaterno" placeholder="Apellido Materno"/>
+                    </div>
+
+                    @*Estado*@
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select name="estado" class="form-control" id="ddlEstado"></select>
+                    </div>
+                </form>
+            </div>
+
+            @*Footer*@
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnUpdate" onclick="Update()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
