@@ -89,5 +89,82 @@ namespace BL
 
             return result;
         }
+
+        public static ML.Result Add(ML.Empleado empleado)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using (DL.EignacioLeenkenGroupContext context= new DL.EignacioLeenkenGroupContext())
+                {
+                    int query = context.Database.ExecuteSqlRaw($"EmpleadoAdd '{empleado.NombreEmpleado}','{empleado.ApellidoPaterno}','{empleado.ApellidoPaterno}',{empleado.Estado.IdEstado}");
+                    if (query>0)
+                    {
+                        result.Message = "Se ingresaron los datos correctamente";
+                    }
+                }
+                result.Correct = true;
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.Ex = ex;
+                result.Message = "Ocurrio un problema";
+            }
+            return result;
+        }
+
+        public static ML.Result Update(ML.Empleado empleado)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using (DL.EignacioLeenkenGroupContext context= new DL.EignacioLeenkenGroupContext())
+                {
+                    int query = context.Database.ExecuteSqlRaw($"EmpleadoUpdate {empleado.IdEmpleado},'{empleado.NombreEmpleado}','{empleado.ApellidoPaterno}','{empleado.ApellidoMaterno}','{empleado.Estado.IdEstado}'");
+                    if (query>0)
+                    {
+                        result.Message = "Se actualizaron los datos correctamente";
+                    }
+                }
+                result.Correct = true;
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.Ex = ex;
+                result.Message = "Ocurrio un problema";
+            }
+
+            return result;
+        }
+
+        public static ML.Result Delete(int IdEmpleado)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using (DL.EignacioLeenkenGroupContext context= new DL.EignacioLeenkenGroupContext())
+                {
+                    var query = context.Database.ExecuteSqlRaw($"EmpleadoDelete {IdEmpleado}");
+
+                    if (query>0)
+                    {
+                        result.Message = "Se elimino correctamente el registro";
+                    }
+                }
+                result.Correct = true;
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.Ex = ex;
+                result.Message = "Ocurrio un problema";
+            }
+            return result;
+        }
     }
 }

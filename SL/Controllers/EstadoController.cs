@@ -2,9 +2,11 @@
 
 namespace SL.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class EstadoController : Controller
     {
-        [HttpGet("api/GetAll")]
+        [HttpGet("GetAll")]
         public ActionResult Getall()
         {
             ML.Estado estado=new ML.Estado();

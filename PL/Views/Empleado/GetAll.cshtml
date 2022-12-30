@@ -61,7 +61,7 @@
             @*Header*@
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">Informacion del empleado</h4>
-                <button type="button" class="close" data-dismiss="modal">x</button> @*Creacion de boton de cerrar*@
+                <button type="button" class="close" data-dismiss="modal" onclick="ModalCerrar()">x</button> @*Creacion de boton de cerrar*@
             </div>
 
             @*Body*@
@@ -107,8 +107,8 @@
 
             @*Footer*@
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="btnUpdate" onclick="Update()">Aceptar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnUpdate" onclick="Aceptar()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="ModalCerrar()">Cancelar</button>
             </div>
         </div>
     </div>
